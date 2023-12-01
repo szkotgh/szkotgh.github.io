@@ -1,0 +1,15 @@
+body{
+    background-image: url(../media/bg.jpg);
+    background-size: cover;
+}
+
+#menu {
+    margin-top: 35vh;
+
+    text-align: center;
+}
+
+#menu_title {
+    line-height: 200%;
+    font-weight: bold;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘 시간표</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/schedule.css">
+<body>
+    <div id="schodule-table">
+        <table id="styled-table" class="animate__animated animate__fadeInUp">
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        <h1>시간표</h1>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="col">학년</th>
+                    <th scope="col">반</th>
+                    <th scope="col">교시</th>
+                    <th scope="col">과목</th>
+                </tr>
+            </thead>
+            <tbody id="timetableData">
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer>
+    <div id="footer-button-group" class="animate__animated animate__fadeInLeft">
+        <p id="footer-text">Loading...</p>
+        <button id="plus-day-btn" class="btn btn-secondary btn-sm" type="button">다음날</button>
+        <button id="minus-day-btn" class="btn btn-primary btn-sm" type="button">전날</button>
+        <button id="reset-day-btn" class="btn btn-primary btn-sm" type="button">오늘</button>
+    </div>
+    
+</footer>
+<script src="../js/schedule.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
