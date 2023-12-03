@@ -1,6 +1,9 @@
 body{
-    background-image: url(../media/bg.jpg);
-    background-size: cover;
+    background: linear-gradient(to top left, black, black);
+    overflow: hidden;
+    background-size: 100vw 100vh;
+
+    /* background-image: url(../media/bg.jpg); */
 }
 
 #menu {
@@ -9,7 +12,24 @@ body{
     text-align: center;
 }
 
-#menu_title {
-    line-height: 200%;
+#menu-title {
+    color: white;
     font-weight: bold;
+
+    display: none;
+}
+
+#menu-sub-title {
+    color: gray;
+    font-size: 15px;
+
+    display: none;
+}
+
+#todaySchedule {
+    display: none;
+}
+
+#todayFood {
+    display: none;
 }

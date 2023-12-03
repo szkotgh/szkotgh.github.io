@@ -1,4 +1,3 @@
-
 let body = document.querySelector('body');
 
 let plusDayBtn = document.getElementById("plus-day-btn");
@@ -33,35 +32,32 @@ function get_schedule(offset) {
     const dayOfWeekIndex = newDate.getDay();
     const dayOfWeek = daysOfWeek[dayOfWeekIndex];
 
-    const newHours = String(newDate.getHours()).padStart(2, '0');
-    const newMinutes = String(newDate.getMinutes()).padStart(2, '0');
-    const newSeconds = String(newDate.getSeconds()).padStart(2, '0');
-
     const formattedDateForApi = `${newYear}${newMonth}${newDay}`;
     const formattedDateForTitle = `${newMonth}월 ${newDay}일 ${dayOfWeek}요일`;
     const formattedDate = `${newYear}년 ${newMonth}월 ${newDay}일 ${dayOfWeek}요일`;
 
 
     const apiKey = '521523f71bb84eb2bb2546940ffcc8e3';
-    const apiUrl = 'https://open.neis.go.kr/hub/hisTimetable';
+    const apiUrl = 'https://open.neis.go.kr/hub/mealServiceDietInfo';
     const params = {
         KEY: apiKey,
         Type: 'json',
         pIndex: 1,
+        pSize: 1,
+
         ATPT_OFCDC_SC_CODE: 'J10',
         SD_SCHUL_CODE: '7531328',
-        GRADE: 1,
-        CLASS_NM: 9,
-        ALL_TI_YMD: formattedDateForApi
+        MLSV_YMD: formattedDateForApi
     };
 
     let schulName;
-    let grade;
-    let classNm;
+    let cafMenus;
+    let cafDate;
     const tableBody = document.getElementById('timetableData');
 
-    tableTitle.innerHTML = '<h1 id="table-title-text">시간표</h1><div class="spinner"></div>'
-    
+    tableBody.innerHTML = ''
+    tableTitle.innerHTML = '<h1 id="table-title-text">급식표</h1><div class="spinner"></div>'
+
     tableBody.innerHTML = ''
     const errorRow = tableBody.insertRow();
     const errorCell = errorRow.insertCell();
@@ -71,40 +67,33 @@ function get_schedule(offset) {
     fetch(`${apiUrl}?${new URLSearchParams(params)}`)
         .then(response => response.json())
         .then(data => {
-            const timetableData = data.hisTimetable[1].row;
-            const desiredFields = ['GRADE', 'CLASS_NM', 'PERIO', 'ITRT_CNTNT'];
+            const cafeTableData = data.mealServiceDietInfo[1].row[0];
 
+            if (cafeTableData['SCHUL_NM']) {
+                schulName = cafeTableData['SCHUL_NM'];
+            }
+            if (cafeTableData['DDISH_NM']) {
+                cafMenus = cafeTableData['DDISH_NM'];
+            }
+            if (cafeTableData['MLSV_YMD']) {
+                cafDate = cafeTableData['MLSV_YMD'];
+            }
+            
             tableBody.innerHTML = ''
-            timetableData.forEach((rowData, index) => {
-                if (rowData['SCHUL_NM']) {
-                    schulName = rowData['SCHUL_NM'];
-                }
-                if (rowData['GRADE']) {
-                    grade = rowData['GRADE'];
-                }
-                if (rowData['CLASS_NM']) {
-                    classNm = rowData['CLASS_NM'];
-                }
+            const row = tableBody.insertRow();
+            row.style.opacity = '0';
+            row.style.transition = 'opacity 0.5s ease-in-out';
 
-                const row = tableBody.insertRow();
-                row.style.opacity = '0';
-                row.style.transition = 'opacity 0.5s ease-in-out';
+            // animation
+            setTimeout(() => {
+                row.style.opacity = '1';
+            }, 50);
 
-                // animation
-                setTimeout(() => {
-                    row.style.opacity = '1';
-                }, 50 * index);
+            const cell = row.insertCell();
+            cell.innerHTML = cafMenus;
 
-                for (const key in rowData) {
-                    if (desiredFields.includes(key)) {
-                        const cell = row.insertCell();
-                        cell.textContent = rowData[key];
-                    }
-                }
-            });
-
-            tableTitle.innerHTML = '<h1 id="table-title-text">시간표</h1><p id="table-sub-title">' + formattedDateForTitle + '</p>'
-            document.getElementById('footer-text').innerText = formattedDate + (' (' + schulName + ' ' + grade + '학년 ' + classNm + '반)');
+            tableTitle.innerHTML = '<h1 id="table-title-text">급식표</h1><p id="table-sub-title">' + formattedDateForTitle + '</p>'
+            document.getElementById('footer-text').innerText = formattedDate + (' (' + schulName + ')');
 
             setTimeout(() => {
                 enabled_all_btn();
@@ -112,12 +101,12 @@ function get_schedule(offset) {
         })
         .catch(error => {
             console.error('error: ', error);
-
+            
             tableBody.innerHTML = ''
             const errorRow = tableBody.insertRow();
             const errorCell = errorRow.insertCell();
             errorCell.colSpan = 4;
-            tableTitle.innerHTML = '<h1 id="table-title-text">시간표</h1><p id="table-sub-title">' + formattedDateForTitle + '</p>'
+            tableTitle.innerHTML = '<h1 id="table-title-text">급식표</h1><p id="table-sub-title">' + formattedDateForTitle + '</p>'
             errorCell.textContent = '데이터가 없거나 가져올 수 없습니다.';
 
             document.getElementById('footer-text').innerText = formattedDate
@@ -173,7 +162,7 @@ applyDateBtn.addEventListener('click', () => {
     }
 
     disabled_all_btn();
-    day_edit = diffDays - 1;
+    day_edit = diffDays;
     get_schedule(day_edit);
 });
 
@@ -186,7 +175,7 @@ homeBtn.addEventListener('click', () => {
 moveBtn.addEventListener('click', () => {
     body.classList.replace('animate__fadeIn', 'animate__fadeOut')
     setTimeout(function () {
-        location.href = 'cafeteria.html'
+        location.href = 'schedule.html'
     }, 800)
 })
 
