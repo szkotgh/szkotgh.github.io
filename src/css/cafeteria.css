@@ -1,4 +1,4 @@
-*{
+* {
     z-index: 1;
 }
 
@@ -10,23 +10,20 @@ body {
 #background {
     width: 100vw;
     height: 100vh;
-    
+
     position: absolute;
     z-index: 0;
 
     background: linear-gradient(to top left, #9df2ff, #9cffb1);
 }
 
-#home-btn {
+#head-button{
     position: absolute;
     top: 3rem;
-    left: 5rem;
+    left: 5%;
+
 }
-#move-btn {
-    position: absolute;
-    top: 3rem;
-    left: 9.2rem;
-}
+
 
 
 #schodule-table {
@@ -35,6 +32,7 @@ body {
     font-family: sans-serif;
     align-items: center;
     height: 100vh;
+    padding-bottom: 10vh;
 }
 
 #main-table {
@@ -45,11 +43,13 @@ body {
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
 #table-title-text {
     margin: 0px;
     font-size: 2.5rem;
     font-weight: bold;
 }
+
 #table-sub-title {
     margin: 0px;
     font-size: 1.2rem;
@@ -69,13 +69,18 @@ body {
     font-weight: 500;
 }
 
+.main-table-title {
+    background-color: #00826d;
+    padding: 10px;
+}
+
 #main-table tr:nth-child(even) td {
-    background-color: rgb(255, 245, 245);
+    background-color: rgb(255, 255, 255);
     color: black;
 }
 
 #main-table tr:nth-child(odd) td {
-    background-color: #e2e9eb;
+    background-color: #fafafa;
     color: black;
 }
 
@@ -83,7 +88,7 @@ footer {
     position: absolute;
 
     bottom: 0px;
-    left: 5rem;
+    left: 5%;
 
     height: 8rem;
 
@@ -101,13 +106,16 @@ footer {
 
     color: white;
 }
-.date-picker {
-    margin-top: 5px;
+
+#date-picker {
+    margin-top: 7px;
+    
 }
-.date-picker input[type="date"] {
+
+#date-picker input[type="date"] {
     border-radius: 5px;
     border: none;
-    overflow:hidden;
+    overflow: hidden;
 
     text-align: center;
 
@@ -115,9 +123,15 @@ footer {
     font-family: sans-serif;
 }
 
+#apply-date-btn {
+    margin-bottom: 5px;
+}
+
 .spinner {
-    border: 3px solid #f3f3f3; /* Light grey */
-    border-top: 3px solid #3498db; /* Blue */
+    border: 3px solid #f3f3f3;
+    /* Light grey */
+    border-top: 3px solid #3498db;
+    /* Blue */
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -129,6 +143,7 @@ footer {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

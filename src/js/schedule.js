@@ -61,7 +61,7 @@ function get_schedule(offset) {
     const tableBody = document.getElementById('timetableData');
 
     tableTitle.innerHTML = '<h1 id="table-title-text">시간표</h1><div class="spinner"></div>'
-    
+
     tableBody.innerHTML = ''
     const errorRow = tableBody.insertRow();
     const errorCell = errorRow.insertCell();
@@ -177,14 +177,20 @@ applyDateBtn.addEventListener('click', () => {
     get_schedule(day_edit);
 });
 
+let animateDuration = '.7s'
+
 homeBtn.addEventListener('click', () => {
     body.classList.replace('animate__fadeIn', 'animate__fadeOut')
+    body.style.setProperty('--animate-duration', animateDuration);
+
     setTimeout(function () {
         location.href = 'index.html'
     }, 800)
 })
 moveBtn.addEventListener('click', () => {
     body.classList.replace('animate__fadeIn', 'animate__fadeOut')
+    body.style.setProperty('--animate-duration', animateDuration);
+
     setTimeout(function () {
         location.href = 'cafeteria.html'
     }, 800)

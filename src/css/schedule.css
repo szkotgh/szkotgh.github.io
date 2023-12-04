@@ -1,4 +1,4 @@
-*{
+* {
     z-index: 1;
 }
 
@@ -10,23 +10,18 @@ body {
 #background {
     width: 100vw;
     height: 100vh;
-    
+
     position: absolute;
     z-index: 0;
 
     background: linear-gradient(to top left, #9df2ff, #9cffb1);
 }
 
-#home-btn {
+#head-button{
     position: absolute;
     top: 3rem;
-    left: 5rem;
-}
+    left: 5%;
 
-#move-btn {
-    position: absolute;
-    top: 3rem;
-    left: 9.2rem;
 }
 
 #schodule-table {
@@ -74,6 +69,11 @@ body {
     font-weight: 500;
 }
 
+.main-table-title {
+    background-color: #00826d;
+    padding: 10px;
+}
+
 #main-table tr:nth-child(even) td {
     background-color: rgb(255, 245, 245);
     color: black;
@@ -88,7 +88,7 @@ footer {
     position: absolute;
 
     bottom: 0px;
-    left: 5rem;
+    left: 5%;
 
     height: 8rem;
 
@@ -107,11 +107,12 @@ footer {
     color: white;
 }
 
-.date-picker {
-    margin-top: 5px;
+#date-picker {
+    margin-top: 7px;
+    
 }
 
-.date-picker input[type="date"] {
+#date-picker input[type="date"] {
     border-radius: 5px;
     border: none;
     overflow: hidden;
@@ -120,6 +121,10 @@ footer {
 
     font-size: 16px;
     font-family: sans-serif;
+}
+
+#apply-date-btn {
+    margin-bottom: 5px;
 }
 
 .spinner {

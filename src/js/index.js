@@ -11,20 +11,20 @@ const inAnimation = 'animate__fadeInUp'
 const outAnimation = 'animate__fadeOut'
 
 // menu title
-setTimeout(function(){
+setTimeout(function () {
     menuTitle.style.display = 'block'
     menuTitle.classList.add("animate__animated", inAnimation)
     // sub menu title
-    setTimeout(function() {
+    setTimeout(function () {
         menuSubTitle.style.display = 'block'
         menuSubTitle.classList.add("animate__animated", inAnimation)
         // schedule btn
-        setTimeout(function(){
+        setTimeout(function () {
             todayScheduleBtn.style.display = 'block'
             todayScheduleBtn.classList.add("animate__animated", inAnimation)
-            
+
             // cafeteria btn
-            setTimeout(function(){
+            setTimeout(function () {
                 todayCafeteriaBtn.style.display = 'block'
                 todayCafeteriaBtn.classList.add("animate__animated", inAnimation)
             }, popupTime)
@@ -32,15 +32,21 @@ setTimeout(function(){
     }, popupTime)
 }, popupTime)
 
+let animateDuration = '.7s'
+
 todayScheduleBtn.addEventListener('click', () => {
     body.classList.add("animate__animated", outAnimation)
-    setTimeout(function(){
+    body.style.setProperty('--animate-duration', animateDuration);
+
+    setTimeout(function () {
         location.href = 'schedule.html'
     }, 700)
 })
 todayCafeteriaBtn.addEventListener('click', () => {
     body.classList.add("animate__animated", outAnimation)
-    setTimeout(function(){
+    body.style.setProperty('--animate-duration', animateDuration);
+
+    setTimeout(function () {
         location.href = 'cafeteria.html'
     }, 700)
 })

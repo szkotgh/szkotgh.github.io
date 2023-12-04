@@ -78,7 +78,7 @@ function get_schedule(offset) {
             if (cafeTableData['MLSV_YMD']) {
                 cafDate = cafeTableData['MLSV_YMD'];
             }
-            
+
             tableBody.innerHTML = ''
             const row = tableBody.insertRow();
             row.style.opacity = '0';
@@ -101,7 +101,7 @@ function get_schedule(offset) {
         })
         .catch(error => {
             console.error('error: ', error);
-            
+
             tableBody.innerHTML = ''
             const errorRow = tableBody.insertRow();
             const errorCell = errorRow.insertCell();
@@ -162,20 +162,26 @@ applyDateBtn.addEventListener('click', () => {
     }
 
     disabled_all_btn();
-    day_edit = diffDays;
+    day_edit = diffDays - 1;
     get_schedule(day_edit);
 });
 
+let animateDuration = '.7s'
+
 homeBtn.addEventListener('click', () => {
-    body.classList.replace('animate__fadeIn', 'animate__fadeOut')
+    body.classList.replace('animate__fadeIn', 'animate__fadeOut');
+    body.style.setProperty('--animate-duration', animateDuration);
+
     setTimeout(function () {
         location.href = 'index.html'
     }, 800)
 })
 moveBtn.addEventListener('click', () => {
-    body.classList.replace('animate__fadeIn', 'animate__fadeOut')
+    body.classList.replace('animate__fadeIn', 'animate__fadeOut');
+    body.style.setProperty('--animate-duration', animateDuration);
+
     setTimeout(function () {
-        location.href = 'schedule.html'
+        location.href = 'schedule.html';
     }, 800)
 })
 
