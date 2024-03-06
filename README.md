@@ -1,2 +1,3 @@
-# Now Page
-smc-suhang-231204
+# Schedule and cafeteria site
+## How to start
+npm start

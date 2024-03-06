@@ -13,8 +13,12 @@ let moveBtn = document.getElementById('move-btn')
 
 let tableTitle = document.getElementById("table-title");
 
-let refreshDelay = 1000;
+const refreshDelay = 1000;
+const changeDelay  = 700
 let day_edit = 0;
+
+let user_grade = 1
+let user_class = 9
 
 function addDays(date, days) {
     const result = new Date(date);
@@ -33,14 +37,9 @@ function get_schedule(offset) {
     const dayOfWeekIndex = newDate.getDay();
     const dayOfWeek = daysOfWeek[dayOfWeekIndex];
 
-    const newHours = String(newDate.getHours()).padStart(2, '0');
-    const newMinutes = String(newDate.getMinutes()).padStart(2, '0');
-    const newSeconds = String(newDate.getSeconds()).padStart(2, '0');
-
     const formattedDateForApi = `${newYear}${newMonth}${newDay}`;
     const formattedDateForTitle = `${newMonth}월 ${newDay}일 ${dayOfWeek}요일`;
     const formattedDate = `${newYear}년 ${newMonth}월 ${newDay}일 ${dayOfWeek}요일`;
-
 
     const apiKey = '521523f71bb84eb2bb2546940ffcc8e3';
     const apiUrl = 'https://open.neis.go.kr/hub/hisTimetable';
@@ -50,8 +49,8 @@ function get_schedule(offset) {
         pIndex: 1,
         ATPT_OFCDC_SC_CODE: 'J10',
         SD_SCHUL_CODE: '7531328',
-        GRADE: 1,
-        CLASS_NM: 9,
+        GRADE: user_grade,
+        CLASS_NM: user_class,
         ALL_TI_YMD: formattedDateForApi
     };
 
@@ -71,6 +70,7 @@ function get_schedule(offset) {
     fetch(`${apiUrl}?${new URLSearchParams(params)}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             const timetableData = data.hisTimetable[1].row;
             const desiredFields = ['GRADE', 'CLASS_NM', 'PERIO', 'ITRT_CNTNT'];
 
@@ -173,7 +173,7 @@ applyDateBtn.addEventListener('click', () => {
     }
 
     disabled_all_btn();
-    day_edit = diffDays - 1;
+    day_edit = diffDays;
     get_schedule(day_edit);
 });
 
@@ -185,7 +185,7 @@ homeBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'index.html'
-    }, 800)
+    }, changeDelay)
 })
 moveBtn.addEventListener('click', () => {
     body.classList.replace('animate__fadeIn', 'animate__fadeOut')
@@ -193,7 +193,7 @@ moveBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'cafeteria.html'
-    }, 800)
+    }, changeDelay)
 })
 
 get_schedule(day_edit);

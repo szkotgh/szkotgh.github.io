@@ -5,9 +5,10 @@ let menuSubTitle = document.getElementById("menu-sub-title")
 let todayScheduleBtn = document.getElementById("todaySchedule")
 let todayCafeteriaBtn = document.getElementById("todayFood")
 
-const popupTime = 300
+const popupTime   = 300
+const changeDelay = 700
 
-const inAnimation = 'animate__fadeInUp'
+const inAnimation  = 'animate__fadeInUp'
 const outAnimation = 'animate__fadeOut'
 
 // menu title
@@ -22,7 +23,6 @@ setTimeout(function () {
         setTimeout(function () {
             todayScheduleBtn.style.display = 'block'
             todayScheduleBtn.classList.add("animate__animated", inAnimation)
-
             // cafeteria btn
             setTimeout(function () {
                 todayCafeteriaBtn.style.display = 'block'
@@ -40,7 +40,7 @@ todayScheduleBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'schedule.html'
-    }, 700)
+    }, changeDelay)
 })
 todayCafeteriaBtn.addEventListener('click', () => {
     body.classList.add("animate__animated", outAnimation)
@@ -48,6 +48,6 @@ todayCafeteriaBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'cafeteria.html'
-    }, 700)
+    }, changeDelay)
 })
 

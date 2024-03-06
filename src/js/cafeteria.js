@@ -12,7 +12,9 @@ let moveBtn = document.getElementById('move-btn')
 
 let tableTitle = document.getElementById("table-title");
 
-let refreshDelay = 1000;
+const refreshDelay = 1000;
+const changeDelay  = 700;
+
 let day_edit = 0;
 
 function addDays(date, days) {
@@ -162,7 +164,7 @@ applyDateBtn.addEventListener('click', () => {
     }
 
     disabled_all_btn();
-    day_edit = diffDays - 1;
+    day_edit = diffDays;
     get_schedule(day_edit);
 });
 
@@ -174,7 +176,7 @@ homeBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'index.html'
-    }, 800)
+    }, changeDelay)
 })
 moveBtn.addEventListener('click', () => {
     body.classList.replace('animate__fadeIn', 'animate__fadeOut');
@@ -182,7 +184,7 @@ moveBtn.addEventListener('click', () => {
 
     setTimeout(function () {
         location.href = 'schedule.html';
-    }, 800)
+    }, changeDelay)
 })
 
 get_schedule(day_edit);
