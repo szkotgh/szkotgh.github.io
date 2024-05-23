@@ -27,6 +27,7 @@
 
         #body-title p {
             font-size: 20px;
+            line-height: 25px;
         }
 
         #menu-cards {
@@ -48,7 +49,7 @@
 <body class="animate__animated">
     <div id="body-title">
         <h1 class="animate__animated animate__fadeInLeft">suzukaotto.github.io</h1>
-        <p class="animate__animated animate__fadeInLeft animate__delay-1s">간단한 github.io 페이지입니다.</p>
+        <p class="animate__animated animate__fadeInLeft animate__delay-1s">개인 github.io 페이지입니다.</p>
     </div>
 
     <!-- MENU CARDS -->
@@ -119,11 +120,7 @@
         })
 
         scheCard.addEventListener('click', () => {
-            doc_body.classList.add("animate__slideOutLeft")
-            
-            setTimeout(() => {
-                location.href = '/sche-cafe_page/page/schedule.html'
-            }, 700)
+            location.href = '/sche-cafe_page/page/schedule.html'
         });
 
         cafeCard.addEventListener('click', () => {
