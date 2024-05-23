@@ -3,8 +3,8 @@
 }
 
 body {
-    background-color: black;
     overflow: hidden;
+    background-color: black;
 }
 
 #background {
@@ -22,8 +22,6 @@ body {
     top: 3rem;
     left: 5%;
 }
-
-
 
 #schodule-table {
     display: flex;
