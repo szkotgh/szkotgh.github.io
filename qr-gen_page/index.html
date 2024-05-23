@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code generator</title>
+    <style>
+        #qr-div {
+            margin: 30px 5%;
+        }
+        #div-title {
+            font-family: arial;
+            font-size: 30px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 gray;
+        }
+        #qrcode {
+            width: 160px;
+            height: 160px;
+        }
+        #text {
+            margin-top: 120px;
+        }
+        #warning-alert {
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="src/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="qrcode.js"></script>
+</head>
+
+<body>
+    <div id="qr-div">
+        <p id="div-title">SIMPLE<br>QR Code Generator</p>
+        
+        <div id="qrcode"></div>
+        
+        <input id="text" type="text" name="text" class="search-bar" placeholder="type of here . . . " value="https://www.google.com" />
+        <div id="warning-alert" class="alert alert-warning" role="alert">
+            Please enter a value!
+        </div>
+    </div>
+
+    <script>
+        var qrcode  = new QRCode("qrcode");
+        const war_alert = document.getElementById("warning-alert")
+
+        function makeCode() {
+            var elText = document.getElementById("text");
+
+            war_alert.style.display = 'none'
+            if (!elText.value) {
+                war_alert.style.display = 'block'
+                return;
+            }
+
+            qrcode.makeCode(elText.value);
+        }
+
+        makeCode();
+
+        $("#text").
+            on("blur", function () {
+                makeCode();
+            }).
+            on("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    makeCode();
+                }
+            });
+    </script>
+</body>
+
+</html>
