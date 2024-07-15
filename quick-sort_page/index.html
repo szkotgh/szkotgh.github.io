@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퀵 정렬 시물레이터</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 300px;
+      margin-top: 10%;
+      padding: 0px 10% 0px 10%;
+    }
+
+    .value_input {
+      width: 50px;
+      text-align: right;
+    }
+
+    .bar {
+      width: 20px;
+      margin: 0 1px;
+      background-color: #000;
+      transition: 0.2s;
+    }
+
+    .bar:hover {
+      transform: scale(1.1);
+      transition: 0.2s;
+      opacity: 0.6;
+    }
+
+    .pivot {
+      background-color: #f32121;
+    }
+
+    .active {
+      background-color: #2196F3;
+    }
+
+    .complete {
+      background-color: #30f03a !important;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>퀵 정렬 시뮬레이터</h1>
+  <span style="width: 16px; height: 16px; background-color: #000000;">&nbsp;</span>&nbsp;값&nbsp;&nbsp;
+  <span style="width: 16px; height: 16px;" class="pivot">&nbsp;</span>&nbsp;피벗값&nbsp;&nbsp;
+  <span style="width: 16px; height: 16px;" class="active">&nbsp;</span>&nbsp;변경값&nbsp;&nbsp;
+  <span style="width: 16px; height: 16px;" class="complete">&nbsp;</span>&nbsp;완료&nbsp;&nbsp;
+  
+  <div class="container" id="chartContainer"></div>
+  <span id="result">설정 개수: | 값 변경 횟수: </span><br>
+  <br>
+  
+  <!-- <button id="rand_arr_btn">랜덤 배열 생성</button> -->
+  <button id="sort_btn">퀵 정렬 시작하기</button><br>
+  <label for="size_range">개수 조정&nbsp;:&nbsp;</label>
+  <input id="size_range" type="range" min="10" max="100" value="20">
+  <input id="size_range_value" class="value_input" type="number" min="10" max="100" value="20"><span>개</span><br>
+  <label for="delay_range">속도 조정&nbsp;:&nbsp;</label>
+  <input id="delay_range" type="range" min="0" max="1000" value="200">
+  <input id="delay_range_value" class="value_input" type="number" min="0" max="1000" value="100"><span>ms</span><br>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
