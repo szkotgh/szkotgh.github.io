@@ -17,7 +17,7 @@ const refreshDelay = 1000;
 const changeDelay  = 700
 let day_edit = 0;
 
-let user_grade = 2
+let user_grade = 3
 let user_class = 9
 
 function addDays(date, days) {
